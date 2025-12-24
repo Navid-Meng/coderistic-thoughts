@@ -11,8 +11,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'In an era of noise, the most profound engineering often lies in what we choose not to build.',
     excerpt_kh: 'នៅក្នុងសម័យកាលនៃសំឡេងរំខាន វិស្វកម្មដែលស៊ីជម្រៅបំផុតជារឿយៗស្ថិតនៅក្នុងអ្វីដែលយើងជ្រើសរើសមិនបង្កើត។',
     tags: ['engineering', 'minimalism', 'philosophy'],
-    contentUrl: 'quiet-code-en.md',
-    contentUrlKh: 'quiet-code-kh.md'
+    contentUrl: 'contents/quiet-code-en.md',
+    contentUrlKh: 'contents/quiet-code-kh.md'
   },
   {
     id: 'digital-stoicism',
@@ -23,8 +23,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'How to maintain a soul in a world governed by algorithms and infinite scrolls.',
     excerpt_kh: 'របៀបរក្សាព្រលឹងនៅក្នុងពិភពលោកដែលគ្រប់គ្រងដោយ algorithms និងការអូសមើលមិនចេះចប់។',
     tags: ['stoicism', 'wellness', 'life'],
-    contentUrl: 'digital-stoicism-en.md',
-    contentUrlKh: 'digital-stoicism-kh.md'
+    contentUrl: 'contents/digital-stoicism-en.md',
+    contentUrlKh: 'contents/digital-stoicism-kh.md'
   }
 ];
 

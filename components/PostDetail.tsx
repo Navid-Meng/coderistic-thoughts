@@ -70,7 +70,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ post, onBack, t, theme, lang })
       if (line.startsWith('### ')) return <h3 key={i} className="text-lg sm:text-xl font-serif font-bold opacity-80 mt-6 mb-3">{line.replace('### ', '')}</h3>;
       if (line.startsWith('> ')) return <blockquote key={i} className="border-l-2 border-red-900/60 pl-4 sm:pl-6 italic opacity-80 my-6 py-2 text-base sm:text-lg">{line.replace('> ', '')}</blockquote>;
       if (line.trim() === '') return <div key={i} className="h-4" />;
-      return <p key={i} className="opacity-90 leading-relaxed mb-4 text-base sm:text-lg">{line}</p>;
+      return <p key={i} className="opacity-90 leading-relaxed mb-4 text-base font-normal">{line}</p>;
     });
   };
 
