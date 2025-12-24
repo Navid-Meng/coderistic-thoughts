@@ -70,9 +70,9 @@ const App: React.FC = () => {
   }, [searchQuery, lang]);
 
   const themeColors = {
-    dark: 'bg-[#121212] text-zinc-300',
-    light: 'bg-[#fafaf9] text-zinc-700',
-    heavenly: 'bg-[#fdf6e3] text-[#433422]'
+    dark: 'bg-[#121212] text-zinc-100',
+    light: 'bg-[#fafaf9] text-zinc-900',
+    heavenly: 'bg-[#fdf6e3] text-[#2c2115]'
   };
 
   return (
