@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { BlogPost, UIStrings, ThemeMode, Language } from '../types';
-import { GoogleGenAI } from "@google/genai";
+import { OpenRouter } from "@openrouter/sdk";
 
 interface PostDetailProps {
   post: BlogPost;
@@ -42,22 +41,44 @@ const PostDetail: React.FC<PostDetailProps> = ({ post, onBack, t, theme, lang })
 
   const fetchWisdom = async () => {
     setLoadingWisdom(true);
+    setWisdom(""); // Reset wisdom for streaming
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: `Based on the following blog post content, provide a single, powerful "Pearl of Wisdom" in one sentence that a 100-year-old philosopher might say to a young coder. 
-        Post Title: ${lang === 'kh' ? post.title_kh : post.title}
-        Content: ${content}`,
-        config: {
-          temperature: 0.8,
-          systemInstruction: `You are an ancient, tech-savvy sage. Respond in ${lang === 'en' ? 'English' : 'Khmer'} with a poetic, short, and profound sentence.`
-        }
+      // @ts-ignore - process.env is injected via vite.config.ts
+      const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY;
+      
+      if (!apiKey || apiKey === "undefined") {
+        throw new Error("OpenRouter API Key is missing. Please add OPENROUTER_API_KEY to your .env file.");
+      }
+
+      const openrouter = new OpenRouter({ apiKey });
+
+      const stream = await openrouter.chat.send({
+        model: "nex-agi/deepseek-v3.1-nex-n1:free",
+        messages: [
+          {
+            role: "user",
+            content: `Provide a powerful wisdom from the most popular quote in the world (unique and not cliche). Respond in ${lang === 'en' ? 'English' : 'Khmer'} with a poetic, short, and profound sentence. Don't include any additional text or explanation.`
+          }
+        ],
+        stream: true
       });
-      setWisdom(response.text?.trim() || (lang === 'kh' ? "ភាពស្ងប់ស្ងាត់គឺជាប្រាជ្ញាពិត។" : "Silence is the truest wisdom."));
-    } catch (err) {
-      console.error(err);
-      setWisdom(lang === 'kh' ? "ប្រាជ្ញាត្រូវបានរកឃើញនៅខាងក្នុង មិនមែននៅក្នុងម៉ាស៊ីនទេ។" : "Wisdom is found within, not in the machine.");
+
+      let fullText = "";
+      for await (const chunk of (stream as any)) {
+        const content = chunk.choices[0]?.delta?.content;
+        if (content) {
+          fullText += content;
+          setWisdom(fullText);
+        }
+      }
+      
+      if (!fullText) {
+        setWisdom(lang === 'kh' ? "ភាពស្ងប់ស្ងាត់គឺជាប្រាជ្ញាពិត" : "Silence is the truest wisdom.");
+      }
+    } catch (err: any) {
+      console.error("OpenRouter API Error:", err);
+      if (err.message) console.error("Error Message:", err.message);
+      setWisdom(lang === 'kh' ? "ពេលកំហឹងកើតមាន សូមគិតពីផលលំបាក" : "When you are in a hole, stop digging.");
     } finally {
       setLoadingWisdom(false);
     }
