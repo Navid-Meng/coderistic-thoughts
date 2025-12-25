@@ -2,29 +2,29 @@
 import { BlogPost, SocialLink, UIStrings } from './types';
 
 export const BLOG_POSTS: BlogPost[] = [
+  // {
+  //   id: 'the-art-of-quiet-code',
+  //   title: 'The Art of Quiet Code',
+  //   title_kh: 'សិល្បៈនៃកូដដ៏ស្ងប់ស្ងាត់',
+  //   date: 'Autumn Equinox, 2024',
+  //   readingTime: '6 min read',
+  //   excerpt: 'In an era of noise, the most profound engineering often lies in what we choose not to build.',
+  //   excerpt_kh: 'នៅក្នុងសម័យកាលនៃសំឡេងរំខាន វិស្វកម្មដែលស៊ីជម្រៅបំផុតជារឿយៗស្ថិតនៅក្នុងអ្វីដែលយើងជ្រើសរើសមិនបង្កើត។',
+  //   tags: ['engineering', 'minimalism', 'philosophy'],
+  //   contentUrl: 'contents/quiet-code-en.md',
+  //   contentUrlKh: 'contents/quiet-code-kh.md'
+  // },
   {
-    id: 'the-art-of-quiet-code',
-    title: 'The Art of Quiet Code',
-    title_kh: 'សិល្បៈនៃកូដដ៏ស្ងប់ស្ងាត់',
-    date: 'Autumn Equinox, 2024',
-    readingTime: '6 min read',
-    excerpt: 'In an era of noise, the most profound engineering often lies in what we choose not to build.',
-    excerpt_kh: 'នៅក្នុងសម័យកាលនៃសំឡេងរំខាន វិស្វកម្មដែលស៊ីជម្រៅបំផុតជារឿយៗស្ថិតនៅក្នុងអ្វីដែលយើងជ្រើសរើសមិនបង្កើត។',
-    tags: ['engineering', 'minimalism', 'philosophy'],
-    contentUrl: 'contents/quiet-code-en.md',
-    contentUrlKh: 'contents/quiet-code-kh.md'
-  },
-  {
-    id: 'digital-stoicism',
-    title: 'Digital Stoicism: Finding Peace in the Machine',
-    title_kh: 'Digital Stoicism: ការស្វែងរកសន្តិភាពក្នុងម៉ាស៊ីន',
+    id: 'i-achieved-nothing-this-year',
+    title: 'I achieved nothing this year',
+    title_kh: 'ខ្លះមិនបានសម្រេចអ្វីជាដុំកំភួនសោះក្នុងរយៈពេល ១ ឆ្នាំកន្លងមកនេះ',
     date: 'Midsummer, 2024',
     readingTime: '4 min read',
     excerpt: 'How to maintain a soul in a world governed by algorithms and infinite scrolls.',
-    excerpt_kh: 'របៀបរក្សាព្រលឹងនៅក្នុងពិភពលោកដែលគ្រប់គ្រងដោយ algorithms និងការអូសមើលមិនចេះចប់។',
+    excerpt_kh: 'ខ្លះមិនបានសម្រេចអ្វីជាដុំកំភួនសោះក្នុងរយៈពេល ១ ឆ្នាំកន្លងមកនេះ',
     tags: ['stoicism', 'wellness', 'life'],
-    contentUrl: 'contents/digital-stoicism-en.md',
-    contentUrlKh: 'contents/digital-stoicism-kh.md'
+    contentUrl: 'contents/i-achieved-nothing-this-year-en.md',
+    contentUrlKh: 'contents/i-achieved-nothing-this-year-kh.md'
   }
 ];
 
